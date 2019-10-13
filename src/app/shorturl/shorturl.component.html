@@ -18,12 +18,9 @@
        #inputUrl="ngModel"
       [class.is-invalid]="!inputUrl.valid && !inputUrl.pristine">
       <button class="mt-3 btn btn-block btn-login btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
-      <p class="mt-3" style="color: red;" *ngIf="errorMessage && shorturl.length===0" >{{ errorMessage }}</p>
-      <div class="mt-3 bg-grey" *ngIf="shorturl.length>0">
-
+            <div class="mt-3 bg-grey" *ngIf="shorturl.length>0">
         <label for="url" > Your Short Url:</label>
         <p class="font-weight-normal" style="border: 2px solid black; padding:5px" >{{ shorturl }}</p>
-
        </div>
       </form>
 

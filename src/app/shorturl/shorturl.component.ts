@@ -15,7 +15,6 @@ export class ShorturlComponent implements OnInit {
     longurl: '',
 };
  shorturl = '';
- errorMessage = '';
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
@@ -28,11 +27,6 @@ addUrl(form: NgForm) {
     .subscribe((responseData)  => {
      this.shorturl = responseData.shorturl;
      form.reset();
-     this.errorMessage = '';
-    }, (error) => {
-      console.log(error.error);
-      this.errorMessage = 'invalid url';
-      this.shorturl = '';
     });
   }
 

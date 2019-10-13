@@ -99,6 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
 /* harmony import */ var _app_routes__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.routes */ "./src/app/app.routes.ts");
 /* harmony import */ var _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/auth-interceptor.service */ "./src/app/services/auth-interceptor.service.ts");
+/* harmony import */ var _services_error_interceptor_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/error-interceptor.service */ "./src/app/services/error-interceptor.service.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./error/error.component */ "./src/app/error/error.component.ts");
+
+
+
+
 
 
 
@@ -120,16 +128,23 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
                 _shorturl_shorturl_component__WEBPACK_IMPORTED_MODULE_7__["ShorturlComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
-                _register_register_component__WEBPACK_IMPORTED_MODULE_9__["RegisterComponent"]
+                _register_register_component__WEBPACK_IMPORTED_MODULE_9__["RegisterComponent"],
+                _error_error_component__WEBPACK_IMPORTED_MODULE_15__["ErrorComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(_app_routes__WEBPACK_IMPORTED_MODULE_10__["APPROUTES"]),
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_13__["BrowserAnimationsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_14__["MatDialogModule"]
             ],
-            providers: [{ provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_11__["AuthInterceptor"], multi: true }],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            providers: [
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _services_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_11__["AuthInterceptor"], multi: true },
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _services_error_interceptor_service__WEBPACK_IMPORTED_MODULE_12__["ErrorInterceptor"], multi: true }
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]],
+            entryComponents: [_error_error_component__WEBPACK_IMPORTED_MODULE_15__["ErrorComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -163,6 +178,66 @@ var APPROUTES = [
     { path: 'shorturl', canActivate: [_guard_authgaurd_service__WEBPACK_IMPORTED_MODULE_3__["AuthGaurdService"]], component: _shorturl_shorturl_component__WEBPACK_IMPORTED_MODULE_2__["ShorturlComponent"] },
     { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
+
+
+/***/ }),
+
+/***/ "./src/app/error/error.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/error/error.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Vycm9yL2Vycm9yLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/error/error.component.html":
+/*!********************************************!*\
+  !*** ./src/app/error/error.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1 mat-dialog-title>An Error Occured</h1>\n<div mat-dialog-content>\n<p >\n  {{data.message}}\n</p>\n</div>\n<div mat-dialog-actions>\n  <button mat-button mat-dialog-close>Okay</button>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/error/error.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/error/error.component.ts ***!
+  \******************************************/
+/*! exports provided: ErrorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorComponent", function() { return ErrorComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+var ErrorComponent = /** @class */ (function () {
+    function ErrorComponent(data) {
+        this.data = data;
+    }
+    ErrorComponent.prototype.ngOnInit = function () {
+    };
+    ErrorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-error',
+            template: __webpack_require__(/*! ./error.component.html */ "./src/app/error/error.component.html"),
+            styles: [__webpack_require__(/*! ./error.component.css */ "./src/app/error/error.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object])
+    ], ErrorComponent);
+    return ErrorComponent;
+}());
+
 
 
 /***/ }),
@@ -301,7 +376,7 @@ module.exports = ".fullpage {\r\n  height: 100vh;\r\n}\r\n.register-container {\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"fullpage\">\n    <div class=\"text-center register-container\">\n      <form class=\"form-signup\" (ngSubmit)=\"register(user)\" #registerForm=\"ngForm\">\n        <h1 class=\"h3 mb-3 font-weight-normal\">Register</h1>\n        <div class=\"mt-3\">\n          <label for=\"inputUserFullName\" class=\"sr-only\">Full Name</label>\n          <input\n            type=\"text\"\n            id=\"inputUserFullName\"\n            class=\"form-control\"\n            placeholder=\"Full Name\"\n            required=\"\"\n            autofocus=\"\"\n            name=\"fullname\"\n            [(ngModel)]=\"user.fullName\"\n            #fullName=\"ngModel\"\n            [class.is-invalid]=\"!fullName.valid && !fullName.pristine\"\n          />\n        </div>\n        <div class=\"mt-3\">\n          <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n          <input\n            type=\"email\"\n            id=\"inputEmail\"\n            class=\"form-control\"\n            placeholder=\"Email address\"\n            required=\"\"\n            email\n            name=\"email\"\n            [(ngModel)]=\"user.email\"\n            #email=\"ngModel\"\n            [class.is-invalid]=\"!email.valid && !email.pristine\"\n          />\n        </div>\n        <div class=\"mt-3\">\n          <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n          <input\n            type=\"password\"\n            id=\"inputPassword\"\n            class=\"form-control\"\n            placeholder=\"Password\"\n            required=\"\"\n            name=\"password\"\n            [(ngModel)]=\"user.password\"\n            #password=\"ngModel\"\n            [class.is-invalid]=\"!password.valid && !password.pristine\"\n          />\n        </div>\n        <button class=\"mt-3 btn btn-lg btn-success btn-block\" type=\"submit\" [disabled]=\"!registerForm.valid\">Register</button>\n       <div *ngIf=\"message.length>0\">\n        <p >{{ message}}</p>\n        <p>\n          <a class=\"mt-3 btn btn-block btn-outline-success\" routerLink=\"/login\">login</a>\n        </p>\n      </div>\n      </form>\n    </div>\n  </div>\n"
+module.exports = "<div class=\"fullpage\">\n    <div class=\"text-center register-container\">\n      <form class=\"form-signup\" (ngSubmit)=\"register(user)\" #registerForm=\"ngForm\">\n        <h1 class=\"h3 mb-3 font-weight-normal\">Register</h1>\n        <div class=\"mt-3\">\n          <label for=\"inputUserFullName\" class=\"sr-only\">Full Name</label>\n          <input\n            type=\"text\"\n            id=\"inputUserFullName\"\n            class=\"form-control\"\n            placeholder=\"Full Name\"\n            required=\"\"\n            autofocus=\"\"\n            name=\"fullname\"\n            [(ngModel)]=\"user.fullName\"\n            #fullName=\"ngModel\"\n            [class.is-invalid]=\"!fullName.valid && !fullName.pristine\"\n          />\n        </div>\n        <div class=\"mt-3\">\n          <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n          <input\n            type=\"email\"\n            id=\"inputEmail\"\n            class=\"form-control\"\n            placeholder=\"Email address\"\n            required=\"\"\n            email\n            name=\"email\"\n            [(ngModel)]=\"user.email\"\n            #email=\"ngModel\"\n            [class.is-invalid]=\"!email.valid && !email.pristine\"\n          />\n        </div>\n        <div class=\"mt-3\">\n          <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n          <input\n            type=\"password\"\n            id=\"inputPassword\"\n            class=\"form-control\"\n            placeholder=\"Password\"\n            required=\"\"\n            name=\"password\"\n            [(ngModel)]=\"user.password\"\n            #password=\"ngModel\"\n            [class.is-invalid]=\"!password.valid && !password.pristine\"\n          />\n        </div>\n        <button class=\"mt-3 btn btn-lg btn-success btn-block\" type=\"submit\" [disabled]=\"!registerForm.valid\">Register</button>\n       <div *ngIf=\"message.length>0\">\n        <p >{{ message}}</p>\n      </div>\n      <p>\n          <a class=\"mt-3 btn btn-block btn-outline-success\" routerLink=\"/login\">login</a>\n        </p>\n      </form>\n    </div>\n  </div>\n"
 
 /***/ }),
 
@@ -451,6 +526,54 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/error-interceptor.service.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/services/error-interceptor.service.ts ***!
+  \*******************************************************/
+/*! exports provided: ErrorInterceptor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorInterceptor", function() { return ErrorInterceptor; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../error/error.component */ "./src/app/error/error.component.ts");
+
+
+
+
+
+
+var ErrorInterceptor = /** @class */ (function () {
+    function ErrorInterceptor(dialog) {
+        this.dialog = dialog;
+    }
+    ErrorInterceptor.prototype.intercept = function (req, next) {
+        var _this = this;
+        return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(function (error) {
+            var errorMessage = 'An unknown error occurred';
+            if (error.error.message) {
+                errorMessage = error.error.message;
+            }
+            _this.dialog.open(_error_error_component__WEBPACK_IMPORTED_MODULE_5__["ErrorComponent"], { data: { message: errorMessage } });
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(error);
+        }));
+    };
+    ErrorInterceptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
+    ], ErrorInterceptor);
+    return ErrorInterceptor;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/shorturl/shorturl.component.css":
 /*!*************************************************!*\
   !*** ./src/app/shorturl/shorturl.component.css ***!
@@ -469,7 +592,7 @@ module.exports = ".fullpage {\r\n  height: 87vh;\r\n}\r\n.login-container {\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-dark fixed-top bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">URL Shortener App</a>\n  <div>\n    <button type=\"button\" class=\"btn btn-outline-light my-2 my-sm-0\" (click)=\"logout()\">Logout</button>\n  </div>\n</nav>\n<div class=\"fullpage\">\n  <div class=\"text-center login-container\" >\n    <form class=\"form-signin\" (ngSubmit)=\"addUrl(form)\" #form=\"ngForm\">\n      <h1 class=\"h3 mb-3 font-weight-normal\">Enter the Url</h1>\n      <label for=\"url\" class=\"sr-only\">Orignal Url</label>\n      <input type=\"text\"\n      class=\"form-control\"\n      autofocus=\"\"\n      name=\"longUrl\"\n      minlength=\"5\"\n      required [(ngModel)]=\"urlObject.longurl\"\n       #inputUrl=\"ngModel\"\n      [class.is-invalid]=\"!inputUrl.valid && !inputUrl.pristine\">\n      <button class=\"mt-3 btn btn-block btn-login btn-primary\" type=\"submit\" [disabled]=\"!form.valid\">Submit</button>\n      <p class=\"mt-3\" style=\"color: red;\" *ngIf=\"errorMessage && shorturl.length===0\" >{{ errorMessage }}</p>\n      <div class=\"mt-3 bg-grey\" *ngIf=\"shorturl.length>0\">\n\n        <label for=\"url\" > Your Short Url:</label>\n        <p class=\"font-weight-normal\" style=\"border: 2px solid black; padding:5px\" >{{ shorturl }}</p>\n\n       </div>\n      </form>\n\n  </div>\n</div>\n\n<footer class=\"page-footer font-small blue pt-4 bg-primary\">\n  <div class=\"footer-copyright text-center py-3\">© 2018 Copyright:\n    <a href=\"#\" style=\"color:black\"> URL Shortener App</a>\n  </div>\n\n</footer>\n\n"
+module.exports = "<nav class=\"navbar navbar-dark fixed-top bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">URL Shortener App</a>\n  <div>\n    <button type=\"button\" class=\"btn btn-outline-light my-2 my-sm-0\" (click)=\"logout()\">Logout</button>\n  </div>\n</nav>\n<div class=\"fullpage\">\n  <div class=\"text-center login-container\" >\n    <form class=\"form-signin\" (ngSubmit)=\"addUrl(form)\" #form=\"ngForm\">\n      <h1 class=\"h3 mb-3 font-weight-normal\">Enter the Url</h1>\n      <label for=\"url\" class=\"sr-only\">Orignal Url</label>\n      <input type=\"text\"\n      class=\"form-control\"\n      autofocus=\"\"\n      name=\"longUrl\"\n      minlength=\"5\"\n      required [(ngModel)]=\"urlObject.longurl\"\n       #inputUrl=\"ngModel\"\n      [class.is-invalid]=\"!inputUrl.valid && !inputUrl.pristine\">\n      <button class=\"mt-3 btn btn-block btn-login btn-primary\" type=\"submit\" [disabled]=\"!form.valid\">Submit</button>\n            <div class=\"mt-3 bg-grey\" *ngIf=\"shorturl.length>0\">\n        <label for=\"url\" > Your Short Url:</label>\n        <p class=\"font-weight-normal\" style=\"border: 2px solid black; padding:5px\" >{{ shorturl }}</p>\n       </div>\n      </form>\n\n  </div>\n</div>\n\n<footer class=\"page-footer font-small blue pt-4 bg-primary\">\n  <div class=\"footer-copyright text-center py-3\">© 2018 Copyright:\n    <a href=\"#\" style=\"color:black\"> URL Shortener App</a>\n  </div>\n\n</footer>\n\n"
 
 /***/ }),
 
@@ -499,7 +622,6 @@ var ShorturlComponent = /** @class */ (function () {
             longurl: '',
         };
         this.shorturl = '';
-        this.errorMessage = '';
     }
     ShorturlComponent.prototype.ngOnInit = function () {
     };
@@ -510,11 +632,6 @@ var ShorturlComponent = /** @class */ (function () {
             .subscribe(function (responseData) {
             _this.shorturl = responseData.shorturl;
             form.reset();
-            _this.errorMessage = '';
-        }, function (error) {
-            console.log(error.error);
-            _this.errorMessage = 'invalid url';
-            _this.shorturl = '';
         });
     };
     ShorturlComponent.prototype.logout = function () {

@@ -10,21 +10,31 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { APPROUTES } from './app.routes';
 import { AuthInterceptor } from './services/auth-interceptor.service';
+import { ErrorInterceptor } from './services/error-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShorturlComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APPROUTES),
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }

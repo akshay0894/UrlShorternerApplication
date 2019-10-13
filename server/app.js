@@ -35,12 +35,12 @@ app.post('/shorten',async (req, res,next) => {
       orignalUrl= new URL(req.body.longurl);
     }
     catch{
-      return res.status(400).json({error:'invalid url'});
+      return res.status(400).json({message:'Invalid Url'});
     }
 
     dns.lookup(orignalUrl.hostname, (err)=>{
       if (err){
-        return res.status(404).json({error:'Address not found'});
+        return res.status(404).json({message:'Address not found'});
       }
     })
 
@@ -71,7 +71,7 @@ app.get('/:shortid',(req,res,next) =>{
    if(doc){
     res.redirect(doc.longurl);
    } else
-     res.send(" url does not exists");
+     res.status(400).json({message: 'url does not exists'});
   })
 })
 app.listen(process.env.PORT|| 3000, ()=>{

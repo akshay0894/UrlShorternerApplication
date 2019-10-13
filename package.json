@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "env-cmd -f ./server/config/dev.env nodemon server/app.js"
+    "server": "env-cmd -f ./server/config/dev.env nodemon server/app.js",
+    "test:backend": "jest --watch runInBand"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "express": "^4.17.1",
+    "jest": "^24.9.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.4",
     "mongoose-unique-validator": "^2.0.3",

@@ -2,7 +2,7 @@ const mongoose= require('mongoose');
 const bcrypt= require('bcrypt');
 const jwt = require('jsonwebtoken');
 const uniqueValidator = require('mongoose-unique-validator');
-const config= require('../config');
+
 
 const userSchema = mongoose.Schema({
   fullName:{ type:String},

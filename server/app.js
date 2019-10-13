@@ -3,7 +3,6 @@ const mongoose= require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const nanoid= require('nanoid');
-const config = require('./config');
 const dns = require('dns');
 const userRouter = require('./routers/user');
 const shortUrlModel= require('./models/shorturl');
@@ -20,7 +19,7 @@ app.use(( req, res, next) => {
 })
 
 mongoose.connect(process.env.mongodbURL, {useNewUrlParser: true}).then(()=>{
-}).catch(()=>{
+console.log('connecntion to db')}).catch(()=>{
 })
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -30,7 +29,7 @@ app.get('/', (req,res)=>{
   res.send(path.join(__dirname, '../dist/index.html'));
 });
 
-app.post('/shorten', auth,async (req, res,next) => {
+app.post('/shorten',async (req, res,next) => {
     let orignalUrl;
     try{
       orignalUrl= new URL(req.body.longurl);
